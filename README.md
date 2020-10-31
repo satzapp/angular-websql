@@ -1,3 +1,3 @@
-# angular-ivy-mtd8xe
+# angular-websql
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-ivy-mtd8xe)
+Browser WebSQL implementation for basic CRUD operation using Angular 10.
