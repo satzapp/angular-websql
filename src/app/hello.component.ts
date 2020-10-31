@@ -6,24 +6,10 @@ import { Component, Input, OnInit } from "@angular/core";
   styleUrls: ["hello.component.css"]
 })
 export class HelloComponent implements OnInit {
-  @Input() name: string;
-
   data: any;
   ngOnInit() {
     this.data = 2;
     this.promiseMethod();
-    var db = (<any>window).openDatabase(
-      "mydb",
-      "1.0",
-      "my first database",
-      2 * 1024 * 1024
-    );
-    db.transaction(function(tx) {
-      var sql =
-        "CREATE TABLE vehicles ( id integer primary key autoincrement,vehicle_plate_no VARCHAR(255))";
-      tx.executeSql(sql);
-      tx.executeSql("INSERT INTO vehicles VALUES (NULL, ?)", ["TEST"]);
-    });
   }
 
   waitForOneSecond() {
@@ -40,5 +26,21 @@ export class HelloComponent implements OnInit {
       let total = 5 + this.data;
       console.log(total);
     }
+  }
+
+  updateDB() {
+    var db = (<any>window).openDatabase(
+      "mydb",
+      "1.0",
+      "my first database",
+      2 * 1024 * 1024
+    );
+
+    db.transaction(function(tx) {
+      var sql =
+        "CREATE TABLE vehicles ( id integer primary key autoincrement,vehicle_plate_no VARCHAR(255))";
+      tx.executeSql(sql);
+      tx.executeSql("INSERT INTO vehicles VALUES (NULL, ?)", ["TEST"]);
+    });
   }
 }
