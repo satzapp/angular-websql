@@ -2,31 +2,44 @@
 	<div class="col-md-6">
 		<div class="card">
 			<div class="card-header text-center">
-				Student
+				Student CRUD
 			</div>
 			<div class="card-body">
-				<h5 class="card-title">Add Student</h5>
-				<form #MyForm="ngForm" (submit)="submitForm()" autocomplete="off">
+				<h5 class="card-title">Add / Update Student</h5>
+				<form [formGroup]="studentForm" (submit)="submitForm()" autocomplete="off">
 					<div class="form-group">
-						<label for="formControlName">Name</label>
-						<input type="text" class="form-control" id="formControlName" placeholder="Satz">
-  </div>
-						<div class="form-group">
-							<label for="exampleFormControlInput1">Email address</label>
-							<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
-							<div class="form-group">
-								<label for="formControlCountry">Country</label>
-								<select class="form-control" id="formControlCountry">
+						<label for="name">Name</label>
+						<input type="text" class="form-control" formControlName="name" placeholder="Satz" [ngClass]="{ 'is-invalid': isSubmitted && validate.name.errors }">
+						<div *ngIf="isSubmitted && validate.name.errors" class="invalid-feedback">
+							Please enter the name.
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email">Email address</label>
+						<input type="email" class="form-control" formControlName="email" placeholder="name@example.com" [ngClass]="{ 'is-invalid': isSubmitted && validate.email.errors }">
+						<div *ngIf="isSubmitted && validate.email.errors" class="invalid-feedback">
+							Please enter the valid email address.
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="country">Country</label>
+						<select class="form-control" formControlName="country" [ngClass]="{ 'is-invalid': isSubmitted && validate.country.errors }">
+          <option value="">select country</option>
           <option value="1">India</option>
           <option value="2">Other</option>
         </select>
-							</div>
-							<div class="form-group">
-								<label for="formControlComments">Comments</label>
-								<textarea class="form-control" id="formControlComments" rows="3"></textarea>
-							</div>
-							<button type="submit" class="btn btn-primary">Add Student</button>
+						<div class="invalid-feedback" *ngIf="isSubmitted && validate.country.errors">
+							Please choose the country.
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="comments">Comments</label>
+						<textarea class="form-control" formControlName="comments" rows="3" [ngClass]="{ 'is-invalid': isSubmitted && validate.comments.errors }"></textarea>
+						<div class="invalid-feedback" *ngIf="isSubmitted && validate.comments.errors">
+							Please enter the comments.
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary">Add Student</button>
 				</form>
 			</div>
 		</div>
@@ -34,7 +47,7 @@
 	<div class="col-md-6">
 		<div class="card">
 			<div class="card-header text-center">
-				Student
+				Student CRUD
 			</div>
 			<div class="card-body">
 				<h5 class="card-title">Student List</h5>
