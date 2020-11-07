@@ -6,10 +6,12 @@ import { AppComponent } from "./app.component";
 import { HelloComponent } from "./hello.component";
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { StudentComponent } from "./student/student.component";
+import { StudentService } from "./services/student.service";
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   declarations: [AppComponent, HelloComponent, StudentComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [StudentService]
 })
 export class AppModule {}
