@@ -6,9 +6,9 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./student.component.css"]
 })
 export class StudentComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("student 1");
+  }
   submitForm() {
     console.log("test");
   }
