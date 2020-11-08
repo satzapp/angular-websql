@@ -11,6 +11,7 @@ export class StudentComponent implements OnInit {
   studentForm: FormGroup;
   isSubmitted: boolean = false;
   isLoading: boolean = false;
+  isSuccess: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,9 +47,10 @@ export class StudentComponent implements OnInit {
     }
 
     this.isLoading = false;
-    let isUpdated = true; //this.studentService.save(this.studentForm.value);
+    let isUpdated = this.studentService.saveData(this.studentForm.value);
 
     if (isUpdated) {
+      this.isSuccess = true;
       console.log("Student data is added!");
     } else {
       console.log("Student data is not added!");

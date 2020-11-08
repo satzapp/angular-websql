@@ -4,7 +4,8 @@ import { Injectable } from "@angular/core";
 export class StudentService {
   constructor() {}
 
-  save(data) {
+  saveData(data) {
     console.log(data);
+    return true;
   }
 }

@@ -7,10 +7,16 @@ import { HelloComponent } from "./hello.component";
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { StudentComponent } from "./student/student.component";
 import { StudentService } from "./services/student.service";
+import { AlertComponent } from "./alert/alert.component";
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
-  declarations: [AppComponent, HelloComponent, StudentComponent],
+  declarations: [
+    AppComponent,
+    HelloComponent,
+    StudentComponent,
+    AlertComponent
+  ],
   bootstrap: [AppComponent],
   providers: [StudentService]
 })
