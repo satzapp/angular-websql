@@ -9,6 +9,7 @@ import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { StudentComponent } from "./student/student.component";
 import { StudentService } from "./services/student.service";
 import { AlertComponent } from "./alert/alert.component";
+import { StudentListComponent } from "./student-list/student-list.component";
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { AlertComponent } from "./alert/alert.component";
     AppComponent,
     HelloComponent,
     StudentComponent,
-    AlertComponent
+    AlertComponent,
+    StudentListComponent
   ],
   bootstrap: [AppComponent],
   providers: [StudentService]

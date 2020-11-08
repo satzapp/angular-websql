@@ -1,0 +1,26 @@
+<div class="card">
+	<div class="card-header text-center">
+		Student CRUD
+	</div>
+	<div class="card-body">
+		<h5 class="card-title">Student List</h5>
+		<table class="table">
+			<thead class="thead-light">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Name</th>
+					<th scope="col">Email</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let student of students">
+					<td scope="row">{{ student.id }}</td>
+					<td scope="row">{{ student.name }}</td>
+					<td scope="row">{{ student.email }}</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
