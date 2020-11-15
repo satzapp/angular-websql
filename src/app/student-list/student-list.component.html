@@ -14,11 +14,17 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let student of students">
-					<td scope="row">{{ student.id }}</td>
-					<td scope="row">{{ student.name }}</td>
-					<td scope="row">{{ student.email }}</td>
-					<td></td>
+				<ng-container *ngIf="students?.length">
+					<tr *ngFor="let student of students">
+						<td scope="row">{{ student.id }}</td>
+						<td scope="row">{{ student.name }}</td>
+						<td scope="row">{{ student.email }}</td>
+						<td scope="row">#</td>
+						<td></td>
+					</tr>
+				</ng-container>
+				<tr *ngIf="students?.length == 0">
+					<td scope="row" colspan="4">No records!</td>
 				</tr>
 			</tbody>
 		</table>
