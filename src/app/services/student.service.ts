@@ -20,12 +20,12 @@ export class StudentService {
     var createSQL =
       "CREATE TABLE IF NOT EXISTS students ( id integer primary key autoincrement,name VARCHAR(255), email VARCHAR(255), country VARCHAR(50), comments TEXT, created_at TIMESTAMP DEFAULT(datetime('now', 'localtime'))";
 
-    return await this.executeQuery(createSQL);
+    return this.executeQuery(createSQL);
   }
 
   // excute the SQL Query
   async executeQuery(sql) {
-    await this.DB.transaction(function(tx) {
+    return await this.DB.transaction(function(tx) {
       tx.executeSql(sql);
     });
   }
@@ -36,7 +36,14 @@ export class StudentService {
       console.log("tx", tx);
       tx.executeSql(
         "INSERT INTO students (name, email, country, comments) VALUES(?, ?, ?, ?)",
-        [data.name, data.email, data.country, data.comments]
+        [data.name, data.email, data.country, data.comments],
+        function(sqlTransaction, sqlResultSet) {
+          console.log("Table has been created.", sqlResultSet);
+        },
+        function(sqlTransaction, sqlError) {
+          /* Error handling */
+          console.log("Table has been created.", sqlError);
+        }
       );
     });
     return saveData;

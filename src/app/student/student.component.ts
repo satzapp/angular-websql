@@ -48,7 +48,6 @@ export class StudentComponent implements OnInit {
 
     this.isLoading = false;
     let isUpdated = this.studentService.saveData(this.studentForm.value);
-    console.log("isUpdateds", isUpdated);
     if (isUpdated) {
       this.isSuccess = true;
     } else {
