@@ -18,7 +18,7 @@ export class StudentService {
     );
 
     var createSQL =
-      "CREATE TABLE IF NOT EXISTS students ( id integer primary key autoincrement,name VARCHAR(255), email VARCHAR(255), country VARCHAR(50), comments TEXT, created_at TIMESTAMP DEFAULT(datetime('now', 'localtime'))";
+      "CREATE TABLE IF NOT EXISTS students ( name VARCHAR(255), email VARCHAR(255), country VARCHAR(50), comments TEXT, created_at TIMESTAMP DEFAULT(datetime('now', 'localtime')))";
 
     return this.executeQuery(createSQL);
   }
@@ -49,14 +49,17 @@ export class StudentService {
     return saveData;
   }
 
-  async getStudents() {
+  getStudents() {
     var data: any = [];
-    let ifDataExists: any = await this.executeQuery(
+    let ifDataExists: any = this.executeQuery(
       "SELECT * FROM students order by id DESC"
     );
+
     if (ifDataExists) {
       data = ifDataExists;
     }
+
+    console.log(ifDataExists);
     return data;
   }
 }
