@@ -15,11 +15,11 @@
 			</thead>
 			<tbody>
 				<ng-container *ngIf="students?.length">
-					<tr *ngFor="let student of students">
-						<td scope="row">{{ student.id }}</td>
+					<tr *ngFor="let student of students; let indexOfelement=index">
+						<td scope="row">{{ indexOfelement + 1 }}</td>
 						<td scope="row">{{ student.name }}</td>
 						<td scope="row">{{ student.email }}</td>
-						<td scope="row">#</td>
+						<td scope="row">{{ student.country }}</td>
 						<td></td>
 					</tr>
 				</ng-container>

@@ -49,17 +49,22 @@ export class StudentService {
     return saveData;
   }
 
-  getStudents() {
-    var data: any = [];
-    let ifDataExists: any = this.executeQuery(
-      "SELECT * FROM students order by id DESC"
-    );
+  listStudents() {
+    return new Promise((resolve, reject) => {
+      this.DB.transaction(function(tx) {
+        tx.executeSql(
+          "SELECT rowid, name, email, comments FROM students order by rowid DESC",
+          [],
+          function(tx, results) {
+            resolve(results.rows);
+          }
+        );
+      }, null);
+    });
+  }
 
-    if (ifDataExists) {
-      data = ifDataExists;
-    }
-
-    console.log(ifDataExists);
-    return data;
+  async getStudents() {
+    console.log(await this.listStudents());
+    return await this.listStudents();
   }
 }

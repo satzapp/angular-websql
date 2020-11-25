@@ -10,7 +10,7 @@ export class StudentListComponent implements OnInit {
   students: any = [];
   constructor(private studentService: StudentService) {}
 
-  ngOnInit() {
-    this.students = this.studentService.getStudents();
+  async ngOnInit() {
+    this.students = await this.studentService.getStudents();
   }
 }
